@@ -1,14 +1,15 @@
 <template>
-  <div class="mainss" >
+  <div class="mainss">
     <!-- <div class="btns" @click="change(item)" v-for="(item,index) in arrays" :key="index">
         <div class="btnsss">{{item}}</div>
     </div> -->
-   <van-tabbar v-model="active" @change="onChange">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="search">标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
-</van-tabbar>
+    <van-tabbar v-model="active"
+                @change="onChange">
+      <van-tabbar-item icon="home-o">商户中心</van-tabbar-item>
+      <van-tabbar-item icon="search">消息</van-tabbar-item>
+      <van-tabbar-item icon="friends-o">我的</van-tabbar-item>
+      <!-- <van-tabbar-item icon="setting-o">标签</van-tabbar-item> -->
+    </van-tabbar>
   </div>
 </template>
 
@@ -17,33 +18,32 @@ export default {
   name: 'ismain',
   data() {
     return {
-      active: '0',
-      
+      active: 0,
     }
   },
+  created() {
+    this.active = 0
+    this.onChange('/Home')
+  },
   methods: {
-     onChange(sw){
-    switch(sw)
-    {    
-        case 0: 
-        this.$router.push("/Home");
-        break;
+    onChange(sw) {
+      switch (sw) {
+        case 0:
+          this.$router.push('/Home')
+          break
         case 1:
-           this.$router.push("/Profile");
-        break;
+          this.$router.push('/News')
+          break
         case 2:
-           this.$router.push("/Cart");
-        break;
-        case 3:
-           this.$router.push("/About");
-        break;
+          this.$router.push('/Cart')
+          break
+        // case 3:
+        //    this.$router.push("/About");
+        // break;
         default:
-           this.$router.push("/Home");
-    }
-}
-
-
-  
+          this.$router.push('/Home')
+      }
+    },
   },
 }
 </script>

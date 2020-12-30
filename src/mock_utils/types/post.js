@@ -46,5 +46,27 @@ export const POST = {
       "timestamp": 1582786432130
     }
   },
-
+  '/aData': (req, res) => {
+    let body = JSON.parse(req.body)
+    return {
+      "success": true,
+      "code": 200,
+      "result": {
+        "multi_depart": 0,
+        "data": {
+          "sex": 2,
+          "num0": 500000,
+          "num1": 3040341,
+          "num2": 2321234,
+          "status": 1,
+          "createTime": "2019-02-13 16:02:36",
+          "updateBy": "admin",
+          "updateTime": "2020-02-24 15:32:08",
+        },
+        "departs": [],
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODI3ODgyMzIsInVzZXJuYW1lIjoiamVlY2cifQ.egxCYNeOD-Dcl0u1tANDjz28kl8nFGXIc8sipSYtEAI"
+      },
+      "timestamp": 1582786432130
+    }
+  },
 }

@@ -10,6 +10,13 @@ export function postAction(url, parameter) {
     data: parameter
   })
 }
+export function aData(url, parameter) {
+  return axios({
+    url: url,
+    method: 'post',
+    data: parameter
+  })
+}
 // export function postHeaderAction(url, parameter) {
 //   return axios({
 //     url: url,
