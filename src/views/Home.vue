@@ -22,7 +22,7 @@
           <P class="khnuma">{{num2}}</P>
       </div>
      </div>
-     <div @click="tc" >退出</div>
+     <!-- <div @click="tc" >退出</div> -->
   </div>
 
 

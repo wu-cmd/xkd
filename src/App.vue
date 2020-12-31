@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <isshow v-if="$route.meta.hidden"/>
+   
     <!-- <sy/> -->
     <router-view />
   </div>
