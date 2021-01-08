@@ -2,7 +2,7 @@
   <div class="one">
       <div class="onebk"></div>
       <div class="texts">
-        <div class="textab"></div>
+      <div class="textab"></div>
       </div>
   </div>
 </template>

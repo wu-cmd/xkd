@@ -10,12 +10,12 @@
          <div class="whites">
           <div class="topin">
             <div class="suo"><img src="../../assets/login/sj.png"/></div>
-            <input type="number" class="topina" v-model="loginForm.username" placeholder="请输入手机号" @blur="check_count($event)">
+            <input type="email" class="topina" v-model="loginForm.username" placeholder="请输入邮箱" @blur="check_count($event)">
           </div>
           <!-- <div>请输入正确的手机号</div> -->
           <div class="topinb">
             <div class="suoa"><img src="../../assets/login/yzm.png" /></div>
-            <input type="password" v-model="loginForm.password" class="topinc" placeholder="请输入验证码" @blur="check_phone($event)">
+            <input type="password" v-model="loginForm.yzmCode" class="topinc" placeholder="请输入验证码" @blur="check_phone($event)">
             <div class="djs"  v-if="seem"  @click="changeyzm">获取验证码</div>
             <div class="yzms" v-else >再次获取({{count}}s)</div>
           </div>
@@ -45,7 +45,9 @@
 
 <script>
 
-import { postAction } from "../../api/manage"
+// import { postAction } from "../../api/manage"
+import {yzmFun} from "@/api/user.js"
+import {forGet} from "@/api/user.js"
 export default {
   
   name: 'forget',
@@ -53,6 +55,7 @@ export default {
     return {
       loginForm:{
         username:"",
+        yzmCode:"",
         password:""
       },
       isfalse1:false,
@@ -98,38 +101,31 @@ export default {
           console.log('请输入6~18位字母＋数字组合的手机格式');
        }
     },
-    // 点击登录
+    // 点击修改
+      login(even){
+        let data = {
+          Email : this.loginForm.username,
+          Code :this.loginForm.yzmCode,
+          NewUserPassword:this.loginForm.password
+        }
+        console.log("data",data);
 
-    login(even){
-      let _this = this;
-      console.log('this.loginForm',this.loginForm);
-      if (this.isfalse1 && this.isfalse) {
-        console.log("this.isfalse1",this.isfalse1,this.isfalse);
-        // console.log('账号或密码不能为空')
-         postAction("/login",{}).then(res =>{
-            console.log("jieguo",res);
-            localStorage.setItem("token",res.data.result.token)
-            // console.log("res.data.result.token",res.data.result.token);
-            if (res.data.code == 200) {
-              this.$message.success("登录成功");
-              this.$router.push('/ismain')
-              // console.log("this.$router.push('/Home')",this.$router.push('/Home'))
-            }else{
-              this.$message.error("登录失败");
-            }
-         })
-      }else{
-        alert('账号或密码不能为空')
-      }
-       },
-      //  切换登录
-      logina(){
-        this.loading=true;
-        console.log("222");
-        this.$router.push("/login")
+        forGet(data).then(res =>{
+          console.log("res",res,"data",data)
+        })
       },
+   
       // 获取验证码
       changeyzm(){
+        let datas = {
+            Email : this.loginForm.username,
+        }
+        yzmFun(datas).then(res =>{ 
+          console.log("res",res)
+          // this.message.success("发送成功")
+        })
+
+
        const TIME_COUNT = 60;
       if (!this.time) {
        this.count = TIME_COUNT;
@@ -144,9 +140,44 @@ export default {
         }
        }, 1000)
       }
-        
         console.log("点击获取验证码");
-      }
+      },
+
+
+
+
+       //  切换登录
+      logina(){
+        this.loading=true;
+        console.log("222");
+        this.$router.push("/login")
+      },
+
+
+
+       // login(even){
+    //   let _this = this;
+    //   console.log('this.loginForm',this.loginForm);
+    //   if (this.isfalse1 && this.isfalse) {
+    //     console.log("this.isfalse1",this.isfalse1,this.isfalse);
+    //     // console.log('账号或密码不能为空')
+    //      postAction("/login",{}).then(res =>{
+    //         console.log("jieguo",res);
+    //         localStorage.setItem("token",res.data.result.token)
+    //         // console.log("res.data.result.token",res.data.result.token);
+    //         if (res.data.code == 200) {
+    //           this.$message.success("登录成功");
+    //           this.$router.push('/ismain')
+    //           // console.log("this.$router.push('/Home')",this.$router.push('/Home'))
+    //         }else{
+    //           this.$message.error("登录失败");
+    //         }
+    //      })
+    //   }else{
+    //     alert('账号或密码不能为空')
+    //   }
+    //    },
+     
       }
 }
   

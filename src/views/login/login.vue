@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import {login} from "@/api/user.js"
+import {logins} from "@/api/user.js"
 // import {getHomeMultidata} from "@/network/home.js"
 // import axios from 'axios'
 // import { postAction } from '../../api/manage'
@@ -114,10 +114,12 @@ export default {
         UserName : this.loginForm.username,
         UserPassword : this.loginForm.password,
       }
-      login(params).then(res => {
+     
+      logins(params).then(res => {
         console.log("res",res);
         localStorage.setItem('token', res.data.token);
-        this.$router.push('/ismain')
+        localStorage.setItem('uid', res.data.params.uid);
+      this.$router.push('/ismain')
     })
      },
     //  注册账号

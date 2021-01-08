@@ -6,7 +6,7 @@ import Vant from 'vant';
 import axios from 'axios'
 import 'vant/lib/index.css';
 // 此路径开启全局Mock
-import "./mock_utils/index"
+// import "./mock_utils/index"
 
 
 Vue.use(Vant);

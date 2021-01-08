@@ -17,7 +17,8 @@ const routes = [
      redirect: '/login',
     component: () => import( '../views/login/Sy.vue'),
     meta:{
-      hidden:true
+      hidden:true,
+      requireAuth:false
     }
   },
   {
@@ -25,7 +26,8 @@ const routes = [
     name: 'login',
     component: () => import( '../views/login/login.vue'),
     meta:{
-      hidden: false
+      hidden: false,
+      requireAuth:true
     }
   },
   {
@@ -33,7 +35,7 @@ const routes = [
     name: 'register',
     component: () => import( '../views/login/register.vue'),
     meta:{
-      hidden: false
+      hidden: false,requireAuth:false
     }
   },
   {
@@ -41,7 +43,7 @@ const routes = [
     name: 'yzmLogin',
     component: () => import( '../views/login/yzmLogin.vue'),
     meta:{
-      hidden: false
+      hidden: false,requireAuth:false
     }
   },
   {
@@ -49,23 +51,23 @@ const routes = [
     name: 'forget',
     component: () => import( '../views/login/forget.vue'),
     meta:{
-      hidden: false
+      hidden: false,requireAuth:false
     }
   },
-  {
-    path: '/One',
-    name: 'One',
-    component: () => import( '../views/first/One.vue'),
-    meta:{
-      hidden:true
-    }
-  },
+  // {
+  //   path: '/One',
+  //   name: 'One',
+  //   component: () => import( '../views/first/One.vue'),
+  //   meta:{
+  //     hidden:true,requireAuth:false
+  //   }
+  // },
   {
     path: '/ismain',
     name: 'ismain',
     component: () => import('../views/ismain/ismain.vue'),
     meta:{
-      hidden:true
+      hidden:true,requireAuth:true
     }
   },
   // {
@@ -81,7 +83,7 @@ const routes = [
     name: 'Home',
     component: () => import('../views/Home.vue'),
     meta:{
-      hidden:true
+      hidden:true,requireAuth:true
     }
   },
   {
@@ -89,7 +91,7 @@ const routes = [
     name: 'News',
     component: () => import('../views/News.vue'),
     meta:{
-      hidden:true
+      hidden:true,requireAuth:true
     }
   },
   {
@@ -97,7 +99,7 @@ const routes = [
     name: 'Cart',
     component: () => import('../views/Cart.vue'),
     meta:{
-      hidden:true
+      hidden:true,requireAuth:true
     }
   }
 ]
@@ -109,12 +111,42 @@ const router = new VueRouter({
   routes
   
 })
-router.beforeEach((to, from, next)=>{
-  console.log("to",to);
-  if(to.path === "/login" && "/register")return next();
-  const tokenStr = window.localStorage.getItem('token')
-  console.log("localStorage.getItem('token')",localStorage.getItem('token'));
-  if(!tokenStr) return next('/login')
-  next()
-})
+// router.beforeEach((to, from, next)=>{
+//   console.log("to",to);
+//   if(to.path === "/login" && "/register")return next();
+//   const tokenStr = window.localStorage.getItem('token')
+//   console.log("localStorage.getItem('token')",localStorage.getItem('token'));
+//   if(!tokenStr) return next('/login')
+//   next()
+// })
+router.beforeEach((to, from, next) => {
+  console.log(to);
+  console.log(from);
+  if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
+    if(localStorage.getItem('token')){ //判断本地是否存在access_token
+      next();
+    }else {
+     if(to.path === '/login'){
+        next();
+      }else {
+        next({
+          path:'/login'
+        })
+      }
+    }
+  }
+  else {
+    next();
+  }
+  /*如果本地 存在 token 则 不允许直接跳转到 登录页面*/
+  // if(to.fullPath == "/login"){
+  //   if(localStorage.getItem('token')){
+  //     next({
+  //       path:from.fullPath
+  //     });
+  //   }else {
+  //     next();
+  //   }
+  // }
+});
 export default router

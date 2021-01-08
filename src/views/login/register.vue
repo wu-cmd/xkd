@@ -125,13 +125,13 @@ export default {
        url:'http://frontdev.youqimei.com/plat/v1/register',
        method:'post',
        data:{
-           UserName:"daming001",
+           UserName:"daming002",
            Email:this.loginForm.username,
            Code:this.loginForm.yzm,
            UserPassword:this.loginForm.password
       },  
        }).then(res =>{
-         console.log(res)
+        //  console.log(res)
        })
       // }else{
       //   alert('账号或密码不能为空')

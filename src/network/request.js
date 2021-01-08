@@ -19,7 +19,9 @@ import router from '../router/index.js'
 // create an axios instance
 const service = axios.create({
         // baseURL: process.env.VUE_APP_API_URL, // url = base url + request url
+        // baseURL: process.env.VUE_APP_API_URL, // url = base url + request url
         baseURL: "http://frontdev.youqimei.com", // url = base url + request url
+        // baseURL: "/api", // url = base url + request url
         timeout: 50000, // request timeout
     })
     /*
@@ -34,6 +36,7 @@ service.interceptors.request.use(
             if (token && !config.headers.authorization) {}
 
             config.headers.authorization = 'Bearer ' + token
+            // config.headers("Access-Control-Allow-Origin" , "*") 
                 // }
 
             window.vm.$toast.loading({

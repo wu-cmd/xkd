@@ -30,8 +30,9 @@
 </template>
 
 <script>
-import { aData } from "@/api/manage"
+// import { aData } from "@/api/manage"
 import {getCodeDome} from "@/api/user.js"
+import {info} from "@/api/user.js"
 export default {
   data() {
     return {
@@ -41,27 +42,35 @@ export default {
     }
   },
   created(){
+    let myId = localStorage.getItem("uid")
+    let params = {
+      UserID:myId
+    }
+    info(params).then(res =>{
+       console.log("res",res)
+     })  
     // let _this = this;
-     aData("/aData",{}).then(res =>{
-       console.log("结果",res);
-      if(res.data.code == 200){
-        this.num0 = res.data.result.data.num0;
-        this.num1 = res.data.result.data.num1;
-        this.num2 = res.data.result.data.num2;
-      }else{
-        alert("data error")
-      }
-     })   
+    //  aData("/aData",{}).then(res =>{
+    //    console.log("结果",res);
+    //   if(res.data.code == 200){
+    //     this.num0 = res.data.result.data.num0;
+    //     this.num1 = res.data.result.data.num1;
+    //     this.num2 = res.data.result.data.num2;
+    //   }else{
+    //     alert("data error")
+    //   }
+    //  }) ,
+     
   },
   methods:{
     // 退出
-   tc(){
-     getCodeDome().then(res =>{
-       console.log(111)
-       this.$router.push('/login')
-     })
+  //  tc(){
+  //    getCodeDome().then(res =>{
+  //      console.log(111)
+  //      this.$router.push('/login')
+  //    })
 
-     }
+  //    }
    }
   }
 

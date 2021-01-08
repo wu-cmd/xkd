@@ -1,132 +1,53 @@
 <template>
   <div class="bg">
     <div class="bigwhite">
-      <div class="bigs">
+      <div class="bigs "  v-for="(item,index) in list" :key="index">
       <div class="im">
         <img  src="../assets/one/ld.png"/>
       </div>
       <div class="test1">
         <div class="boxa">
-             <div class="ctext"> 系统通知</div>
-             <div class="ctexta">2020.09.17 13：20</div>
+             <div class="ctext" >系统消息</div>
+             <div class="ctexta">{{item.CreateDate}}</div>
         </div>
-        <div class="ctextb">美国“麦凯恩”和“威尔伯”号驱逐舰以双舰编队方式穿航台湾海峡，中国人民解放军组织海空兵力全程对美舰进行跟踪监视。这是美舰继18日后再次穿航台湾海峡，炫耀武力，挑衅搅局。美舰行径对“台独”势力传递错误信号，严重危害台海地区和平稳定，我们对此表示坚决反对。</div>
+        <div class="ctextb">{{item.Message}}</div>
       </div>
       <div class="dyh">
         <img src="../assets/one/dyh.png"/>
       </div>
     </div>
-  <!-- ************************ -->
-     <div class="bigs">
-      <div class="im">
-        <img  src="../assets/one/ld.png"/>
-      </div>
-      <div class="test1">
-        <div class="boxa">
-             <div class="ctext"> 系统通知</div>
-             <div class="ctexta">2020.09.17 13：20</div>
-        </div>
-        <div class="ctextb">美国“麦凯恩”和“威尔伯”号驱逐舰以双舰编队方式穿航台湾海峡，中国人民解放军组织海空兵力全程对美舰进行跟踪监视。这是美舰继18日后再次穿航台湾海峡，炫耀武力，挑衅搅局。美舰行径对“台独”势力传递错误信号，严重危害台海地区和平稳定，我们对此表示坚决反对。</div>
-      </div>
-      <div class="dyh">
-        <img src="../assets/one/dyh.png"/>
-      </div>
-    </div>
-     <!-- ************************ -->
-     <div class="bigs">
-      <div class="im">
-        <img  src="../assets/one/ld.png"/>
-      </div>
-      <div class="test1">
-        <div class="boxa">
-             <div class="ctext"> 系统通知</div>
-             <div class="ctexta">2020.09.17 13：20</div>
-        </div>
-        <div class="ctextb">美国“麦凯恩”和“威尔伯”号驱逐舰以双舰编队方式穿航台湾海峡，中国人民解放军组织海空兵力全程对美舰进行跟踪监视。这是美舰继18日后再次穿航台湾海峡，炫耀武力，挑衅搅局。美舰行径对“台独”势力传递错误信号，严重危害台海地区和平稳定，我们对此表示坚决反对。</div>
-      </div>
-      <div class="dyh">
-        <img src="../assets/one/dyh.png"/>
-      </div>
-    </div>
-     <!-- ************************ -->
-     <div class="bigs">
-      <div class="im">
-        <img  src="../assets/one/ld.png"/>
-      </div>
-      <div class="test1">
-        <div class="boxa">
-             <div class="ctext"> 系统通知</div>
-             <div class="ctexta">2020.09.17 13：20</div>
-        </div>
-        <div class="ctextb">美国“麦凯恩”和“威尔伯”号驱逐舰以双舰编队方式穿航台湾海峡，中国人民解放军组织海空兵力全程对美舰进行跟踪监视。这是美舰继18日后再次穿航台湾海峡，炫耀武力，挑衅搅局。美舰行径对“台独”势力传递错误信号，严重危害台海地区和平稳定，我们对此表示坚决反对。</div>
-      </div>
-      <div class="dyh">
-        <img src="../assets/one/dyh.png"/>
-      </div>
-    </div>
-     <!-- ************************ -->
-     <div class="bigs">
-      <div class="im">
-        <img  src="../assets/one/ld.png"/>
-      </div>
-      <div class="test1">
-        <div class="boxa">
-             <div class="ctext"> 系统通知</div>
-             <div class="ctexta">2020.09.17 13：20</div>
-        </div>
-        <div class="ctextb">美国“麦凯恩”和“威尔伯”号驱逐舰以双舰编队方式穿航台湾海峡，中国人民解放军组织海空兵力全程对美舰进行跟踪监视。这是美舰继18日后再次穿航台湾海峡，炫耀武力，挑衅搅局。美舰行径对“台独”势力传递错误信号，严重危害台海地区和平稳定，我们对此表示坚决反对。</div>
-      </div>
-      <div class="dyh">
-        <img src="../assets/one/dyh.png"/>
-      </div>
-    </div>
-
-     <!-- ************************ -->
-     <div class="bigs">
-      <div class="im">
-        <img  src="../assets/one/ld.png"/>
-      </div>
-      <div class="test1">
-        <div class="boxa">
-             <div class="ctext"> 系统通知</div>
-             <div class="ctexta">2020.09.17 13：20</div>
-        </div>
-        <div class="ctextb">美国“麦凯恩”和“威尔伯”号驱逐舰以双舰编队方式穿航台湾海峡，中国人民解放军组织海空兵力全程对美舰进行跟踪监视。这是美舰继18日后再次穿航台湾海峡，炫耀武力，挑衅搅局。美舰行径对“台独”势力传递错误信号，严重危害台海地区和平稳定，我们对此表示坚决反对。</div>
-      </div>
-      <div class="dyh">
-        <img src="../assets/one/dyh.png"/>
-      </div>
-    </div>
-     <!-- ************************ -->
-     <div class="bigs">
-      <div class="im">
-        <img  src="../assets/one/ld.png"/>
-      </div>
-      <div class="test1">
-        <div class="boxa">
-             <div class="ctext"> 系统通知</div>
-             <div class="ctexta">2020.09.17 13：20</div>
-        </div>
-        <div class="ctextb">美国“麦凯恩”和“威尔伯”号驱逐舰以双舰编队方式穿航台湾海峡，中国人民解放军组织海空兵力全程对美舰进行跟踪监视。这是美舰继18日后再次穿航台湾海峡，炫耀武力，挑衅搅局。美舰行径对“台独”势力传递错误信号，严重危害台海地区和平稳定，我们对此表示坚决反对。</div>
-      </div>
-      <div class="dyh">
-        <img src="../assets/one/dyh.png"/>
-      </div>
-    </div>
-     <div style="height: 43px; background:rgb(245, 245, 245); margin:0; padding:0"></div>
 </div>
-  
-  
-    
-    
-  
+    <div class="top"></div>
   </div>
 </template>
 
 <script>
+import {list} from "@/api/user.js"
 export default {
-  name:"News"
+  name:"News",
+  data() {
+    return {
+        list:[
+
+        ],
+    }
+  },
+  created(){
+    list().then(res =>{
+      console.log("res",res)
+      this.list=res.data.row;
+      // console.log("newa",newa)
+      // this.list=newa
+     })
+     
+
+  },
+  methods:{
+   
+  }
+
 }
+
 </script>
 
 <style>
@@ -137,7 +58,7 @@ export default {
 .bigwhite{
   padding-top: 10px;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-color:rgb(245, 245, 245);
  
 }
@@ -203,5 +124,7 @@ export default {
       -webkit-box-orient: vertical;
       font-size:12px;
 }
-
+.top{
+  padding-bottom:100px ;background-color: #eee;
+}
 </style>
